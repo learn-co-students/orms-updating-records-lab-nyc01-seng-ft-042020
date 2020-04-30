@@ -1,5 +1,5 @@
 require_relative "../config/environment.rb"
-
+# require 'pry'
   # Remember, you can access your database connection anywhere in this class
   #  with DB[:conn]
 class Student
@@ -57,20 +57,23 @@ def self.create(name,grade)
   student
 end
 
-# def self.new_from_db(row)
-#   student = Student.new
-#   student.id = row[0]
-#   student.name = row[1]
-#   student.grade = row[2]
-#   # student
-# end
-
 def self.new_from_db(row)
-  id = row[0]
-  name = row[1]
-  grade = row[2]
-  self.new(id, name, grade)
+  # binding.pry
+  Student.new(row[0],row[1],row[2])
+  # student.id = row[0]
+  # student.name = row[1]
+  # student.grade = row[2]
+#  student
+ 
 end
+
+# def self.new_from_db(row)
+#   id = row[0]
+#   name = row[1]
+#   grade = row[2]
+#   self.new(id, name, grade)
+# end
+#why does this work and mine doesnt? 
 
 def self.find_by_name(name)
   sql = <<-SQL
